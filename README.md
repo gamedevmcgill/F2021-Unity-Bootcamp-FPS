@@ -8,7 +8,7 @@
 
 Using Git Classic\
 1. On command line\
-`git clone https://github.com/gamedevmcgill/GDM-bootcamp-f2019.git`
+`git clone https://github.com/gamedevmcgill/F2021-Unity-Bootcamp-FPS.git`
 
 2. Within the Unity Bootcamp Folder folder, checkout the branch that has the episode you want to view.\
 Episodes are added soon after each session.\
