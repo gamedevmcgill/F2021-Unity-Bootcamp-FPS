@@ -27,7 +27,7 @@
 
 ## Released episodes: 
 
-* episode-0 (Starting project)
+* episode0 (Starting project)
 
 Note: After each session a new episode will be released along with its assets.
 
