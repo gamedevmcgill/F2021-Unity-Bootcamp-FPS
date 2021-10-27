@@ -28,6 +28,7 @@
 ## Released episodes: 
 
 * episode0 (Starting project)
+* episode1 (Setup and Character Controller)
 
 Note: After each session a new episode will be released along with its assets.
 
