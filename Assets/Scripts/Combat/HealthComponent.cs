@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class HealthComponent : MonoBehaviour {
-    public float InitialHealth;
+    public float InitialHealth = 100;
     private float CurrentHealth;
 
     private void Start() {
