@@ -6,9 +6,23 @@ public class Weapon : MonoBehaviour {
     public GameObject MuzzleFlashPrefab;
     public Transform MuzzleMarker;
 
+    public int ClipSize = 30;
+    private int ClipRemaining;
+
     public float ShotDamage = 10;
 
+    private void Start() {
+        ClipRemaining = ClipSize;
+    }
+
     public void Shoot() {
+        if (ClipRemaining <= 0) {
+            Debug.Log("zero bullet in weapon clip");
+            return;
+        }
+
+        ClipRemaining--;
+
         Vector3 EyePosition = EyeTransform.position;
         Vector3 EyeDirection = EyeTransform.forward;
 
