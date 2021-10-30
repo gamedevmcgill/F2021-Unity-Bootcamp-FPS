@@ -3,6 +3,9 @@ using UnityEngine;
 public class Weapon : MonoBehaviour {
     public Transform EyeTransform;
 
+    public GameObject MuzzleFlashPrefab;
+    public Transform MuzzleMarker;
+
     public float ShotDamage = 10;
 
     public void Shoot() {
@@ -21,5 +24,7 @@ public class Weapon : MonoBehaviour {
 
             Debug.Log("hit object " + hitObject.name);
         }
+
+        Instantiate(MuzzleFlashPrefab, MuzzleMarker);
     }
 }
