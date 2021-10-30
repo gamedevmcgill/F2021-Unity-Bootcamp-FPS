@@ -9,7 +9,8 @@ public class Weapon : MonoBehaviour {
 
         RaycastHit hit;
         if (Physics.Raycast(EyePosition, EyeDirection, out hit)) {
-
+            GameObject hitObject = hit.collider.gameObject;
+            Debug.Log("hit object " + hitObject.name);
         }
     }
 }
