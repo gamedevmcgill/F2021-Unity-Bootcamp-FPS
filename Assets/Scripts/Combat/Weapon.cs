@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Weapon : MonoBehaviour {
     public Transform EyeTransform;
@@ -40,5 +41,9 @@ public class Weapon : MonoBehaviour {
         }
 
         Instantiate(MuzzleFlashPrefab, MuzzleMarker);
+    }
+
+    public IEnumerator Reload() {
+
     }
 }
