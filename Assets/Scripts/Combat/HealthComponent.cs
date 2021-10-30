@@ -10,9 +10,11 @@ public class HealthComponent : MonoBehaviour {
 
     public void TakeDamage(float damageAmount) {
         CurrentHealth -= damageAmount;
+        Debug.Log(gameObject.name + " took damage " + damageAmount);
     }
 
     public void Heal(float healAmount) {
         CurrentHealth += healAmount;
+        Debug.Log(gameObject.name + " healed " + healAmount);
     }
 }
