@@ -9,6 +9,8 @@ public class Weapon : MonoBehaviour {
 
     public int ClipSize = 30;
     private int ClipRemaining;
+    public float ReloadDelay = 5; // in seconds
+    private bool isReloading;
 
     public float ShotDamage = 10;
 
@@ -17,8 +19,11 @@ public class Weapon : MonoBehaviour {
     }
 
     public void Shoot() {
+        if (isReloading) return;
+
         if (ClipRemaining <= 0) {
             Debug.Log("zero bullet in weapon clip");
+            StartCoroutine("Reload");
             return;
         }
 
@@ -44,6 +49,13 @@ public class Weapon : MonoBehaviour {
     }
 
     public IEnumerator Reload() {
+        isReloading = true;
+        Debug.Log("Reloading Weapon...");
 
+        yield return new WaitForSeconds(ReloadDelay);
+        ClipRemaining = ClipSize;
+        isReloading = false;
+
+        Debug.Log("Reloading Complete");
     }
 }
