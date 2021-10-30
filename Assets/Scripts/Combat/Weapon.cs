@@ -7,6 +7,9 @@ public class Weapon : MonoBehaviour {
         Vector3 EyePosition = EyeTransform.position;
         Vector3 EyeDirection = EyeTransform.forward;
 
+        RaycastHit hit;
+        if (Physics.Raycast(EyePosition, EyeDirection, out hit)) {
 
+        }
     }
 }
