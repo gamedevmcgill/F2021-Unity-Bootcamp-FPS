@@ -378,6 +378,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4448447718370701034, guid: 9c32f2e3b18a3a94fa0cb90a4ac1c2fd, type: 3}
   m_PrefabInstance: {fileID: 847678389953646679}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &7279802417290038592 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7981648180778114327, guid: 9c32f2e3b18a3a94fa0cb90a4ac1c2fd, type: 3}
+  m_PrefabInstance: {fileID: 847678389953646679}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &9078081315753412016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,3 +396,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EyeTransform: {fileID: 7999746508878527076}
+  MuzzleFlashPrefab: {fileID: 1336949550903370, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+  MuzzleMarker: {fileID: 7279802417290038592}
+  ShotDamage: 10
