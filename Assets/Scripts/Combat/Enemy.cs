@@ -104,9 +104,13 @@ public class Enemy : MonoBehaviour {
         yield return new WaitForSeconds(AttackDelay);
 
         // attack
-        enemyWeapon.Shoot();
         isAttacking = false;
         currentState = EnemyState.WALKING;
+    }
+
+    public void WeaponFired() {
+        // WeaponFired is called by animator
+        enemyWeapon.Shoot();
     }
 
     private void UpdateAnimatorState(){
