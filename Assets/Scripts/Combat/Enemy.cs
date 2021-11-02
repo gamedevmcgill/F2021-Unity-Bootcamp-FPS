@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,6 +23,10 @@ public class Enemy : MonoBehaviour {
     // create a member variable that specifies the LayerMask for ground to help check if desintaion is on the map
     public LayerMask GroundMask;
 
+    public EnemyWeapon enemyWeapon;
+    public float AttackDelay;
+    private bool isAttacking;
+
     private void Start() {
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         PlayerTransform = playerObject.transform;
@@ -32,6 +37,12 @@ public class Enemy : MonoBehaviour {
         if (Vector3.Distance(transform.position, PlayerTransform.position) > ProximityRange) {
             // if it is not, keep patrolling
             Patrol();
+        }
+        else {
+            if (!isAttacking) {
+                InstructedDestSet = false;
+                StartCoroutine("Attack");
+            }
         }
     }
 
@@ -63,5 +74,21 @@ public class Enemy : MonoBehaviour {
             InstructedDestSet = false;
         }
 
+    }
+
+    private IEnumerator Attack() {
+        // stop the enemy
+        NavAgent.SetDestination(transform.position);
+        isAttacking = true;
+
+        // look at player 
+        transform.LookAt(PlayerTransform.position);
+
+        // wait a bit
+        yield return new WaitForSeconds(AttackDelay);
+
+        // attack
+        enemyWeapon.Shoot();
+        isAttacking = false;
     }
 }
