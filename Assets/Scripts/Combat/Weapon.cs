@@ -2,6 +2,11 @@ using UnityEngine;
 using System.Collections;
 
 public class Weapon : MonoBehaviour {
+    // <access_modifier> delegate <return_type> <delegate_type_name>(parameters...);
+    // <access_modifier> <delegate_type> <delegate_name>;
+    public delegate void OnWeaponStatsChangedDelegate(int clipSize, int clipRemaining);
+    public OnWeaponStatsChangedDelegate OnWeaponStatsChanged;
+
     public Transform EyeTransform;
 
     public GameObject MuzzleFlashPrefab;
@@ -28,6 +33,10 @@ public class Weapon : MonoBehaviour {
         }
 
         ClipRemaining--;
+        if (OnWeaponStatsChanged != null)
+        {
+            OnWeaponStatsChanged(ClipSize, ClipRemaining);
+        }
 
         Vector3 EyePosition = EyeTransform.position;
         Vector3 EyeDirection = EyeTransform.forward;
@@ -55,6 +64,10 @@ public class Weapon : MonoBehaviour {
         yield return new WaitForSeconds(ReloadDelay);
         ClipRemaining = ClipSize;
         isReloading = false;
+
+        if (OnWeaponStatsChanged != null) {
+            OnWeaponStatsChanged(ClipSize, ClipRemaining);
+        }
 
         Debug.Log("Reloading Complete");
     }
