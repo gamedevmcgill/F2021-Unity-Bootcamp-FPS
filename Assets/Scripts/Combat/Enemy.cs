@@ -27,9 +27,23 @@ public class Enemy : MonoBehaviour {
     public float AttackDelay;
     private bool isAttacking;
 
+    public Animator animator;
+    enum EnemyState
+    {
+        IDLE,
+        FIRING,
+        WALKING
+    }
+
+    private EnemyState currentState;
+
     private void Start() {
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         PlayerTransform = playerObject.transform;
+    }
+
+    private void Update() {
+        UpdateAnimatorState();
     }
 
     private void FixedUpdate() {
@@ -61,6 +75,7 @@ public class Enemy : MonoBehaviour {
             if (Physics.Raycast(InstructedDestination, -transform.up, 10.0f, GroundMask)) {
                 InstructedDestSet = true;
                 NavAgent.SetDestination(InstructedDestination);
+                currentState = EnemyState.WALKING;
             } else {
                 // if it is not, do nothing. Another attempt will be made in the next FixedUpdate()
                 return;
@@ -80,6 +95,7 @@ public class Enemy : MonoBehaviour {
         // stop the enemy
         NavAgent.SetDestination(transform.position);
         isAttacking = true;
+        currentState = EnemyState.FIRING;
 
         // look at player 
         transform.LookAt(PlayerTransform.position);
@@ -90,5 +106,26 @@ public class Enemy : MonoBehaviour {
         // attack
         enemyWeapon.Shoot();
         isAttacking = false;
+        currentState = EnemyState.WALKING;
+    }
+
+    private void UpdateAnimatorState(){
+        if (currentState == EnemyState.IDLE) {
+            animator.SetBool("isFiring", false);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isIdle", true);
+        }
+
+        else if (currentState == EnemyState.WALKING) {
+            animator.SetBool("isFiring", false);
+            animator.SetBool("isWalking", true);
+            animator.SetBool("isIdle", false);
+        }
+
+        else if (currentState == EnemyState.FIRING) {
+            animator.SetBool("isFiring", true);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isIdle", false);
+        }
     }
 }
