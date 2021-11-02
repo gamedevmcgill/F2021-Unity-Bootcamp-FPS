@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7010557040031390143}
   - component: {fileID: 5952470458086808428}
   - component: {fileID: 3429579551015200428}
-  - component: {fileID: 658345108389141847}
   - component: {fileID: 8764514756139040874}
   m_Layer: 3
   m_Name: Player
@@ -119,25 +118,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &658345108389141847
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2032170731918160877}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4556e10314176f143b7deb8e44ac069d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &8764514756139040874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,4 +378,6 @@ MonoBehaviour:
   EyeTransform: {fileID: 7999746508878527076}
   MuzzleFlashPrefab: {fileID: 1336949550903370, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
   MuzzleMarker: {fileID: 7279802417290038592}
+  ClipSize: 30
+  ReloadDelay: 5
   ShotDamage: 10
