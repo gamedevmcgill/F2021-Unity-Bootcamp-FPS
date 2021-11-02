@@ -193,6 +193,8 @@ MonoBehaviour:
   GroundMask:
     serializedVersion: 2
     m_Bits: 64
+  enemyWeapon: {fileID: 8594111895992575058}
+  AttackDelay: 3
 --- !u!1001 &7403463988813432115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -283,8 +285,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6764398968911832797, guid: 1157229108a83b94ebb5af1a445f1598, type: 3}
   m_PrefabInstance: {fileID: 7403463988813432115}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2803152955700307769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4636648811388035594, guid: 1157229108a83b94ebb5af1a445f1598, type: 3}
+  m_PrefabInstance: {fileID: 7403463988813432115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3291318163415383427 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5409807403245189296, guid: 1157229108a83b94ebb5af1a445f1598, type: 3}
   m_PrefabInstance: {fileID: 7403463988813432115}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8594111895992575058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2803152955700307769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a7f708255c1c14da8d291ba0922a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EyeTransform: {fileID: 6109054945184466070}
+  MuzzleFlashPrefab: {fileID: 1336949550903370, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+  MuzzleMarker: {fileID: 5729557564052762194}
+  ShotDamage: 10
