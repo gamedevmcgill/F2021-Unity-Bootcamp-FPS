@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour {
     public float AttackDelay;
     private bool isAttacking;
 
+    public HealthComponent healthComponent;
+
     public Animator animator;
     enum EnemyState
     {
@@ -40,6 +42,8 @@ public class Enemy : MonoBehaviour {
     private void Start() {
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         PlayerTransform = playerObject.transform;
+
+        healthComponent.OnCharacterDied += Die;
     }
 
     private void Update() {
@@ -111,6 +115,16 @@ public class Enemy : MonoBehaviour {
     public void WeaponFired() {
         // WeaponFired is called by animator
         enemyWeapon.Shoot();
+    }
+
+    private void Die() {
+        animator.SetBool("isFiring", false);
+        animator.SetBool("isWalking", false);
+        animator.SetBool("isIdle", false);
+        animator.SetTrigger("isDead");
+        healthComponent.OnCharacterDied -= Die;
+        NavAgent.enabled = false;
+        Destroy(this.gameObject, 5);
     }
 
     private void UpdateAnimatorState(){

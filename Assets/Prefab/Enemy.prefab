@@ -195,6 +195,7 @@ MonoBehaviour:
     m_Bits: 64
   enemyWeapon: {fileID: 8594111895992575058}
   AttackDelay: 3
+  healthComponent: {fileID: 6115204338828112750}
   animator: {fileID: 2845210641408885640}
 --- !u!1001 &7403463988813432115
 PrefabInstance:
