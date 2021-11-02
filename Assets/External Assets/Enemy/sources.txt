@@ -1,0 +1,6 @@
+Models and animations via Mixamo
+https://www.mixamo.com/#/?page=1&query=swat&type=Character
+https://www.mixamo.com/#/?page=1&query=idle&type=Motion%2CMotionPack
+https://www.mixamo.com/#/?type=Motion%2CMotionPack
+https://www.mixamo.com/#/?page=1&query=firing&type=Motion%2CMotionPack
+https://www.mixamo.com/#/?page=1&query=walk+forward&type=Motion%2CMotionPack
