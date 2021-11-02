@@ -11,6 +11,7 @@ using UnityEngine.InputSystem;
  */
 public class PlayerController : MonoBehaviour
 {
+    public Weapon weapon;
 
     public GameObject cameraSubobject;
 
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnShoot()
     {
+        weapon.Shoot();
         Debug.Log("Shoot");
     }
     
