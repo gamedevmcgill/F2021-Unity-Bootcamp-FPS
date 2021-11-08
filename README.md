@@ -1,6 +1,5 @@
 # F2021-Unity-Bootcamp-FPS
 
-## GDM-bootcamp-f2021
 3-4 week long boot camp teaching university students the basics of game development and programming. Made in Unity 3D with C\#.
 
 ## Set Up
