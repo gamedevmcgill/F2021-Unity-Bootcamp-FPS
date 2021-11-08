@@ -1,6 +1,6 @@
 # F2021-Unity-Bootcamp-FPS
 
-3-4 week long boot camp teaching university students the basics of game development and programming. Made in Unity 3D with C\#.
+3 weeks long boot camp teaching university students the basics of game development and programming. Made in Unity 3D with C\#.
 
 ## Set Up
 
