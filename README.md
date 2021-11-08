@@ -29,6 +29,7 @@
 
 * episode0 (Starting project)
 * episode1 (Setup and Character Controller)
+* episode2 (Combat and Enemy AI)
 
 Note: After each session a new episode will be released along with its assets.
 
