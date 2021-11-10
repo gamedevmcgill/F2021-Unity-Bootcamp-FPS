@@ -128,6 +128,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI_Game_On",
+            "id": "3fb50ab9-99c4-42f1-8e1d-7d4ebb9bc523",
+            "actions": [
+                {
+                    "name": "Menu_Toggle",
+                    "type": "Button",
+                    "id": "64d086d9-25a5-4270-a86a-d8e464e407e7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e0fa4db3-9c49-4e22-bb57-a19dda112095",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu_Toggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

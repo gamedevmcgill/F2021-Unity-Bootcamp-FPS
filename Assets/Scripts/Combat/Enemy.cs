@@ -39,9 +39,13 @@ public class Enemy : MonoBehaviour {
 
     private EnemyState currentState;
 
+    //private WinLossCheck WinLossChecker; //TODO
+
     private void Start() {
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         PlayerTransform = playerObject.transform;
+
+        //WinLossChecker = GameObject.Find("Game State Handler").GetComponent<WinLossCheck>(); //TODO
 
         healthComponent.OnCharacterDied += Die;
     }
@@ -78,7 +82,7 @@ public class Enemy : MonoBehaviour {
             // ensure that the point is on the map
             if (Physics.Raycast(InstructedDestination, -transform.up, 10.0f, GroundMask)) {
                 InstructedDestSet = true;
-                NavAgent.SetDestination(InstructedDestination);
+                if (NavAgent.isActiveAndEnabled == true) NavAgent.SetDestination(InstructedDestination);
                 currentState = EnemyState.WALKING;
             } else {
                 // if it is not, do nothing. Another attempt will be made in the next FixedUpdate()
@@ -97,7 +101,7 @@ public class Enemy : MonoBehaviour {
 
     private IEnumerator Attack() {
         // stop the enemy
-        NavAgent.SetDestination(transform.position);
+        if (NavAgent.isActiveAndEnabled == true)  NavAgent.SetDestination(transform.position);
         isAttacking = true;
         currentState = EnemyState.FIRING;
 
@@ -117,7 +121,7 @@ public class Enemy : MonoBehaviour {
         enemyWeapon.Shoot();
     }
 
-    private void Die() {
+    private void Die(GameObject g) {
         animator.SetBool("isFiring", false);
         animator.SetBool("isWalking", false);
         animator.SetBool("isIdle", false);

@@ -3,11 +3,11 @@ using UnityEngine;
 public class HealthComponent : MonoBehaviour {
     // <access_modifier> delegate <return_type> <delegate_type_name>();
     // <access_modifier> <delegate_type> <delegate_name>;
-    public delegate void OnCharacterDiedDelegate();
+    public delegate void OnCharacterDiedDelegate(GameObject g); //TODO
     public OnCharacterDiedDelegate OnCharacterDied;
 
     public float InitialHealth = 100;
-    private float CurrentHealth;
+    public float CurrentHealth; //TODO
 
     private void Start() {
         CurrentHealth = InitialHealth;
@@ -18,8 +18,11 @@ public class HealthComponent : MonoBehaviour {
         Debug.Log(gameObject.name + " took damage " + damageAmount);
 
         if (CurrentHealth <= 0) {
+
+            CurrentHealth = 0; //TODO
+
             if (OnCharacterDied != null) {
-                OnCharacterDied();
+                OnCharacterDied(gameObject); //TODO
             }
         }
     }

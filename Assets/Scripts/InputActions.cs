@@ -141,6 +141,33 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI_Game_On"",
+            ""id"": ""3fb50ab9-99c4-42f1-8e1d-7d4ebb9bc523"",
+            ""actions"": [
+                {
+                    ""name"": ""Menu_Toggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""64d086d9-25a5-4270-a86a-d8e464e407e7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e0fa4db3-9c49-4e22-bb57-a19dda112095"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu_Toggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -151,6 +178,9 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
+        // UI_Game_On
+        m_UI_Game_On = asset.FindActionMap("UI_Game_On", throwIfNotFound: true);
+        m_UI_Game_On_Menu_Toggle = m_UI_Game_On.FindAction("Menu_Toggle", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -253,11 +283,48 @@ public class @InputActions : IInputActionCollection, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // UI_Game_On
+    private readonly InputActionMap m_UI_Game_On;
+    private IUI_Game_OnActions m_UI_Game_OnActionsCallbackInterface;
+    private readonly InputAction m_UI_Game_On_Menu_Toggle;
+    public struct UI_Game_OnActions
+    {
+        private @InputActions m_Wrapper;
+        public UI_Game_OnActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Menu_Toggle => m_Wrapper.m_UI_Game_On_Menu_Toggle;
+        public InputActionMap Get() { return m_Wrapper.m_UI_Game_On; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UI_Game_OnActions set) { return set.Get(); }
+        public void SetCallbacks(IUI_Game_OnActions instance)
+        {
+            if (m_Wrapper.m_UI_Game_OnActionsCallbackInterface != null)
+            {
+                @Menu_Toggle.started -= m_Wrapper.m_UI_Game_OnActionsCallbackInterface.OnMenu_Toggle;
+                @Menu_Toggle.performed -= m_Wrapper.m_UI_Game_OnActionsCallbackInterface.OnMenu_Toggle;
+                @Menu_Toggle.canceled -= m_Wrapper.m_UI_Game_OnActionsCallbackInterface.OnMenu_Toggle;
+            }
+            m_Wrapper.m_UI_Game_OnActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Menu_Toggle.started += instance.OnMenu_Toggle;
+                @Menu_Toggle.performed += instance.OnMenu_Toggle;
+                @Menu_Toggle.canceled += instance.OnMenu_Toggle;
+            }
+        }
+    }
+    public UI_Game_OnActions @UI_Game_On => new UI_Game_OnActions(this);
     public interface IPlayerActions
     {
         void OnJump(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+    }
+    public interface IUI_Game_OnActions
+    {
+        void OnMenu_Toggle(InputAction.CallbackContext context);
     }
 }

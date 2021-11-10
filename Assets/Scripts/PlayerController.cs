@@ -67,11 +67,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
-        //inputMap.Disable();
+        inputMap.Disable();
 
         // Deregister the input action callbacks
-        //inputMap.Player.Shoot.performed -= eventCtx => OnShoot();
-        //inputMap.Player.Jump.performed -= eventCtx => OnJump();
+        inputMap.Player.Shoot.performed -= eventCtx => OnShoot();
+        inputMap.Player.Jump.performed -= eventCtx => OnJump();
     }
 
     private void Start()

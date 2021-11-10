@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour {
     public int ClipSize = 30;
     private int ClipRemaining;
     public float ReloadDelay = 5; // in seconds
-    private bool isReloading;
+    public bool isReloading;    //TODO
 
     public float ShotDamage = 10;
 
