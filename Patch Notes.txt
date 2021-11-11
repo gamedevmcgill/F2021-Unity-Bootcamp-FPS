@@ -1,0 +1,25 @@
+Changes and modifications:
+
+	Bug patches:
+		
+		-Add a health component to the player prefab
+		-Enemy.cs:
+			-Lines 84, 105: Patched a Navmesh.SetNavigation related exception when the agent would 
+				try to navigate after its death but before its destruction.
+			-Line 124: add gameobject parameter to the function signature
+		-HealthComponent.cs:
+			-Line 6: modified delegate to take a gameobject parameter
+			-Line 10: made currenthealth public
+			-Line 22: force cap current health to 0 to avoid negative values
+			-Line 25: add gameobject reference pass to the delegate call
+		-Weapon.cs
+			-Line 18: made isReloading public
+		-PlayerController.cs
+			-Lines 70-74: The character controller input map wasn't properly disabled and when going 
+				from the level to the menu. Thus clicking called the shoot method. Fix: Uncomment
+				the code which disabled the input map on object disable
+
+	Balances:
+		-Adjusted enemy prefab scale to 0.75
+		-Balanced player prefab movement, firepower and reload speed
+		-Increased enemy player detection range
