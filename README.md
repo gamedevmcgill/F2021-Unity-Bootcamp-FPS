@@ -22,7 +22,7 @@
 ## Ressources
 
 * Website: https://unity.com/
-* Documentation: https://docs.unity3d.com/Manual/index.html 
+* Documentation: https://docs.unity3d.com/2020.3/Documentation/Manual/index.html 
 
 ## Released episodes: 
 
